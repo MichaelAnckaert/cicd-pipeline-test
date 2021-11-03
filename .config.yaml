@@ -6,3 +6,7 @@ workflows:
         run: echo "running flake 8"
       - name: Blakc
         run: echo "running black"
+  - name: testing
+    steps: 
+      - name: Run Django tests
+        run: echo "running django tests"
