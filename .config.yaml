@@ -9,4 +9,6 @@ workflows:
   - name: testing
     steps: 
       - name: Run Django tests
-        run: echo "running django tests"
+        run: |
+          echo "running django tests"
+          python3 manage.py test
