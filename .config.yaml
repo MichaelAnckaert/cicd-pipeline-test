@@ -1,12 +1,13 @@
-image: python:3.10-bullseye
 workflows:
   - name: code-quality
+    image: python:3.10-bullseye
     steps: 
       - name: Flake 8
         run: echo "running flake 8"
-      - name: Blakc
+      - name: Black
         run: echo "running black"
   - name: testing
+    image: python:3.10-bullseye
     steps: 
       - name: Run Django tests
         run: |
