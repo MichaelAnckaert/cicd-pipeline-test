@@ -1,0 +1,8 @@
+image: python:3.10-bullseye
+workflows:
+  - name: Code Quality
+    steps: 
+      - name: Flake 8
+        run: echo "running flake 8"
+      - name: Blakc
+        run: echo "running black"
