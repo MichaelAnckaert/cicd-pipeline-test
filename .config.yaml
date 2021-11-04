@@ -1,15 +1,28 @@
 workflows:
   - name: code-quality
     image: python:3.10-bullseye
-    steps: 
+    jobs: 
       - name: Flake 8
-        run: echo "running flake 8"
+        steps:
+          - run: pip install flake8
+          - run: flake8 .
       - name: Black
-        run: echo "running black"
+        steps:
+           - run: pip install black
+           - run: black .
   - name: testing
-    image: python:3.10-bullseye
-    steps: 
+    docker:
+      - name: postgres
+        image: postgres:latest
+    jobs:
       - name: Run Django tests
-        run: |
-          echo "running django tests"
-          python3 manage.py test
+        image: python:3.10-bullseye
+        steps: 
+          - name: Wait for database to be ready
+            run: wait-for-db postgres 5432
+          - name: Install requirements
+            run: pip install -r requirements.txt
+          - name: Run Django tests
+            run: |
+              cd src
+              echo "running django tests"
