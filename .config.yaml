@@ -23,4 +23,4 @@ workflows:
       - name: Run Django tests
         run: |
           cd src
-          echo "running django tests"
+          cat fakefile
