@@ -20,7 +20,7 @@ workflows:
         run: echo "Mocking wait for db"
       - name: Install requirements
         run: echo "Mocking install requirements"
-      - name: Run Django tests
+      - name: Run tests
         run: |
           cd src
-          cat fakefile
+          python tests.py
