@@ -1,4 +1,15 @@
 workflows:
+  - name: code quality
+    image: python:3.10-bullseye
+    steps: 
+      - name: Install and run flake8
+        run: |
+          pip install flake8
+          flake8 src
+      - name: Install and run black
+        run: |
+          pip install black
+          black src
   - name: testing
     image: python:3.10-bullseye
     docker:
